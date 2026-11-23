@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scal<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>つながロープ｜スマホサロン・第3版</title>
+
+<style>
+:root{--bg:#F5F7F9;--surface:#FFFFFF;--ink:#1F2933;--muted:#5F6B76;--ai:#25384F;--on-ai:#FFFFFF;--soft:#E6EDF4;--sun:#F2B632;--sun-soft:#FDF3D6;--line:#D7DEE5;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141B22;--surface:#1D2630;--ink:#E8EDF2;--muted:#9AA7B3;--ai:#A9C4E4;--on-ai:#14202C;--soft:#26364A;--sun-soft:#3A3217;--line:#33404D}}
+:root[data-theme="dark"]{--bg:#141B22;--surface:#1D2630;--ink:#E8EDF2;--muted:#9AA7B3;--ai:#A9C4E4;--on-ai:#14202C;--soft:#26364A;--sun-soft:#3A3217;--line:#33404D}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic",sans-serif;font-size:17px;line-height:1.75;padding-bottom:84px}
+main{max-width:640px;margin:0 auto;padding:20px 18px}
+.tab{display:none}.tab.on{display:block}
+h1{font-size:28px;line-height:1.4;margin:0 0 10px}
+h2{font-size:21px;margin:28px 0 10px}
+h3{font-size:18px;margin:0 0 4px}
+p{margin:0 0 12px}
+.muted{color:var(--muted);font-size:15px}
+.hero{position:relative;padding:28px 0 8px}
+.hero::after{content:"";position:absolute;right:-34px;top:-14px;width:120px;height:120px;border-radius:50%;background:var(--sun);opacity:.9;z-index:-1}
+.draft{display:inline-block;background:var(--sun-soft);border:1px solid var(--sun);border-radius:6px;padding:1px 8px;font-size:13px;margin-left:6px;vertical-align:middle}
+.item{display:block;width:100%;text-align:left;background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--ai);border-radius:10px;padding:14px 16px;margin:0 0 12px;color:inherit;font:inherit;cursor:pointer}
+.item.sun{border-left-color:var(--sun)}
+details{background:var(--surface);border:1px solid var(--line);border-radius:10px;margin:0 0 10px}
+summary{cursor:pointer;padding:14px 16px;font-weight:700;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"＋";float:right;color:var(--muted)}
+details[open] summary::after{content:"－"}
+details .body{padding:0 16px 12px}
+details ul,details ol{margin:0;padding-left:1.3em}
+details li{margin-bottom:6px}
+.photo{aspect-ratio:16/9;background:var(--soft);border:2px dashed var(--line);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:15px;margin-bottom:8px}
+.sal{margin-bottom:22px}
+.seg{display:flex;gap:8px;margin-bottom:14px}
+.seg button{flex:1;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;cursor:pointer}
+.seg button.on{background:var(--ai);color:var(--on-ai);border-color:var(--ai)}
+.man{display:none}.man.on{display:block}
+table{border-collapse:collapse;width:100%;text-align:center;margin:8px 0 12px}
+th,td{border:1px solid var(--line);padding:0;height:46px;font-size:14px}
+td button{width:100%;height:100%;border:0;background:var(--surface);color:var(--ink);font:inherit;cursor:pointer}
+td button.busy{background:var(--soft);color:var(--muted)}
+td button.salon{box-shadow:inset 0 0 0 3px var(--sun)}
+.result{background:var(--sun-soft);border-radius:10px;padding:12px 16px}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
+nav button{flex:1;border:0;background:none;color:var(--muted);font:inherit;font-size:12px;padding:10px 2px;cursor:pointer;min-height:58px}
+nav button b{display:block;font-size:20px;line-height:1.2;font-weight:400}
+nav button.on{color:var(--ai);font-weight:700;box-shadow:inset 0 3px 0 var(--sun)}
+.btn{display:block;width:100%;padding:13px;margin:8px 0;border:0;border-radius:10px;background:var(--ai);color:var(--on-ai);font:inherit;font-weight:700;cursor:pointer}
+.btn.sub{background:var(--soft);color:var(--ink);font-weight:400;padding:8px;width:auto;display:inline-block}
+input,select,textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit}
+.bar{height:12px;background:var(--soft);border-radius:6px;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;background:var(--sun)}
+.dots{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;margin:10px 0}
+.dot{aspect-ratio:1;border-radius:50%;background:var(--soft);color:var(--muted);font-size:11px;display:flex;align-items:center;justify-content:center}
+.dot.f{background:var(--ai);color:var(--on-ai)}.dot.m{box-shadow:0 0 0 2px var(--sun)}
+.row{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:15px}
+.qr{display:block;width:100%;max-width:280px;margin:8px auto;image-rendering:pixelated;background:#fff}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+:root{--bg:#faf8f2;--surface:#fff;--ink:#253a37;--muted:#63736b;--ai:#285749;--soft:#edf2e9;--sun:#e3b951;--sun-soft:#faf0d6;--line:#dfe5dc;color-scheme:light}
+body{font-family:"Yu Gothic","Hiragino Sans",sans-serif;font-size:16px;line-height:1.85;padding-bottom:95px}
+.site-header{max-width:1120px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:20px 26px;border-bottom:1px solid var(--line);gap:16px}.brand{display:flex;align-items:center;gap:10px;background:none;border:0;color:var(--ink);font:inherit;font-size:22px;font-weight:800;padding:0;cursor:pointer}.brand svg{width:40px;height:40px;flex:none}.header-label{font-size:12px;color:var(--muted);text-align:right}.header-label strong{display:block;color:var(--ai);font-size:13px}
+main{max-width:1040px;padding:32px 26px;margin:auto}h1{font-size:clamp(30px,4vw,48px);letter-spacing:.03em;line-height:1.45}h2{font-size:23px;margin:30px 0 16px}h3{font-size:18px}.eyebrow{font-size:12px;letter-spacing:.14em;color:var(--ai);font-weight:700;margin-bottom:14px}.intro{display:grid;grid-template-columns:1fr 1.05fr;gap:38px;align-items:center;padding:12px 0 35px}.intro p{color:var(--muted)}.intro .activity-photo{border-radius:80px 18px 18px 18px;aspect-ratio:1.12;object-fit:cover}.activity-photo{width:100%;height:auto;display:block;object-fit:cover;border-radius:18px}.pill{display:inline-block;background:var(--sun-soft);padding:4px 12px;border-radius:30px;font-size:12px;color:#71521c}.actions{display:flex;gap:10px;flex-wrap:wrap}.actions .btn{width:auto;padding:12px 20px}.btn{border-radius:12px;min-height:44px}.btn.outline{background:var(--surface);color:var(--ai);border:1px solid var(--ai)}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.cards .item{height:100%;margin:0;border:1px solid var(--line);border-radius:16px;padding:20px}.card-num{font-size:12px;color:var(--ai);display:block;margin-bottom:10px;letter-spacing:.1em}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}.panel{padding:24px;border:1px solid var(--line);border-radius:18px;background:var(--surface);margin:20px 0}.note{border-left:3px solid var(--sun);padding:12px 16px;background:var(--sun-soft);font-size:14px}.flow{counter-reset:step;list-style:none;padding:0;display:grid;gap:12px}.flow li{counter-increment:step;display:grid;grid-template-columns:40px 1fr;gap:12px;padding:18px;background:var(--surface);border:1px solid var(--line);border-radius:14px}.flow li::before{content:counter(step,decimal-leading-zero);color:var(--ai);font-weight:bold;padding-top:3px}.flow p{color:var(--muted);margin:4px 0 0;font-size:14px}figure{margin:0}figcaption{font-size:13px;color:var(--muted);margin:8px 0 18px}.about-banner{background:var(--soft);border-radius:20px;padding:28px;margin-top:32px}.small{font-size:13px;color:var(--muted)}nav{left:50%;transform:translateX(-50%);width:min(100%,700px);border:1px solid var(--line);border-radius:20px 20px 0 0;box-shadow:0 -8px 30px #253a3708}nav button{font-size:12px;min-height:68px}nav button.on{box-shadow:none;background:var(--soft);border-radius:16px 16px 0 0}nav button b{font-size:21px;margin-bottom:4px}.draft{margin:0 0 10px;font-size:12px}.dots{grid-template-columns:repeat(5,1fr);max-width:450px;gap:12px}.dot{font-size:16px;background:var(--surface);border:1px dashed var(--line)}.dot.f{border-style:solid}.row button{margin:0}.plan-event{padding:16px;background:var(--surface);border:1px solid var(--line);border-radius:12px;margin:10px 0}.plan-event p{margin:0}.plan-event button{float:right}.sal{margin-bottom:26px}.section-title{max-width:650px;margin-bottom:28px}.copyright{text-align:center;font-size:12px;color:var(--muted);padding:32px 0 4px}a{color:var(--ai)}button:disabled{opacity:.6;cursor:default}summary::after{float:none;margin-left:12px}.tab{animation:appear .22s ease}@keyframes appear{from{opacity:.3;transform:translateY(5px)}to{opacity:1;transform:none}}
+@media(max-width:700px){main{padding:22px 18px}.site-header{padding:14px 18px}.brand{font-size:19px}.header-label{font-size:10px}.header-label strong{font-size:11px}.intro{grid-template-columns:1fr;gap:18px;padding-top:2px}.intro .activity-photo{aspect-ratio:4/3;border-radius:45px 16px 16px 16px}.cards{grid-template-columns:1fr}.cards .item{padding:16px}.card-num{margin-bottom:4px}.two-col{grid-template-columns:1fr;gap:8px}.panel{padding:18px}.about-banner{padding:20px}.section-title{margin-bottom:20px}.row{flex-wrap:wrap}h1{font-size:32px}.intro h1{font-size:36px}}
+</style>
+</head>
+<body>
+<header class="site-header"><button class="brand" data-go="home" aria-label="つながロープ ホーム"><svg viewBox="0 0 48 48" aria-hidden="true" fill="none"><path d="M6 31C9 15 19 14 24 24S39 33 42 17" stroke="#d6a52e" stroke-width="7" stroke-linecap="round"/><path d="M6 31C9 15 19 14 24 24S39 33 42 17" stroke="#b88a1c" stroke-width="7" stroke-dasharray="1.5 4.5"/></svg><span>つながロープ</span></button><div class="header-label"><strong>スマホサロン</strong>学生ボランティアガイド · Vol.03</div></header><main>
+
+<section class="tab on" id="home"><div class="intro"><div><p class="eyebrow">SMARTPHONE SALON / VOLUNTEER GUIDE</p><h1>スマホをきっかけに、<br>人と、つながる。</h1><p>地域の方と同じテーブルを囲んで、<br>お話ししたり、スマホを一緒に触ったり。<br>最初の一歩を、このガイドから。</p><span class="pill">学生のための活動ガイド</span><div class="actions"><button class="btn" data-go="salon">活動の様子を見る →</button><button class="btn outline" data-go="plan">活動予定</button></div></div><img class="activity-photo" src="photos/1.jpg"  alt="同じテーブルでスマホを操作したり、ノートを取ったりする参加者と学生" loading="lazy" width="1280" height="960"></div><p class="eyebrow">START HERE</p><h2 style="margin-top:0">参加する前に、知っておきたいこと。</h2><div class="cards"><button class="item" data-go="salon"><span class="card-num">01 / EXPERIENCE</span><h3>当日の流れ</h3><span class="muted">集合から振り返りまで、一日のイメージをつかむ。</span></button><button class="item" data-go="help"><span class="card-num">02 / SUPPORT</span><h3>困ったときは</h3><span class="muted">話しかけ方や、分からないことを聞かれたときに。</span></button><button class="item" data-go="manual"><span class="card-num">03 / GUIDE</span><h3>教え方のヒント</h3><span class="muted">iPhone・Android・パソコンの基本操作。</span></button></div><div class="two-col"><div class="panel"><span class="eyebrow">SCHEDULE</span><h3>次の参加を考えよう</h3><p class="muted">開催情報を確認したら、自分の予定にメモ。空きコマも整理できます。</p><button class="btn outline" data-go="plan">予定を開く</button></div><div class="panel"><span class="eyebrow">MY RECORD</span><h3>一回ずつ、つながりを記録。</h3><p class="muted">活動のスタンプを集めて、参加回数と活動時間を振り返ろう。</p><button class="btn outline" data-go="stamp">スタンプカードを見る</button></div></div><div class="about-banner"><div class="two-col"><div><p class="eyebrow">ABOUT US</p><h2 style="margin-top:0">この活動をつくる、私たち。</h2><p>学生チーム「さくさくぱんだ」の活動と思いを紹介します。</p><button class="btn sub" data-go="about">私たちについて →</button></div><img class="activity-photo" src="photos/2.jpg" alt="スマホカフェで参加者と学生が集まった集合写真" loading="lazy" width="1280" height="960"></div></div></section>
+
+<section class="tab" id="help">
+  <h1>困ったときは</h1>
+  <p class="muted">完璧に教えなくて大丈夫です。一緒に画面を見るだけでも、十分役に立っています。</p>
+
+  <h2>うまく話せないとき</h2>
+  <details><summary>最初の一言に困ったら</summary><div class="body"><ul>
+    <li>「こんにちは、学生の○○です。今日はどんなことをしてみたいですか？」</li>
+    <li>名前と、学生であることを伝えるだけで安心してもらえます。</li>
+    <li>相手のスマホを見せてもらうところから始めましょう。</li></ul></div></details>
+  <details><summary>会話が止まってしまったら</summary><div class="body"><ul>
+    <li>沈黙は悪いことではありません。画面を見ながら、相手の操作を待ちましょう。</li>
+    <li>「ゆっくりで大丈夫ですよ」と声をかけます。</li>
+    <li>雑談を無理に作らなくて大丈夫です。</li></ul></div></details>
+  <details><summary>分かりやすく伝えるコツ</summary><div class="body"><ul>
+    <li>一度に伝えられるのは1つだけ。短く、ゆっくり話します。</li>
+    <li>横文字は言い換えます。「アプリ」は「スマホの中の道具」、「タップ」は「指で軽く押す」。</li>
+    <li>操作は本人にしてもらい、勝手に画面を触らないようにします。</li>
+    <li>できたら「できましたね」と、その場で伝えます。</li></ul></div></details>
+
+  <h2>質問に答えられないとき</h2>
+  <details><summary>分からないことを聞かれたら</summary><div class="body"><ul>
+    <li>「分からないので、一緒に調べてみましょう」と言って大丈夫です。</li>
+    <li>自信がないまま操作するのはやめましょう。</li>
+    <li>近くの先輩や、サロンの担当の人に聞きます。</li></ul></div></details>
+  <details><summary>必ず相談してほしいこと</summary><div class="body"><ul>
+    <li>お金の支払い、契約、課金、怪しいメッセージやリンク</li>
+    <li>パスワードや暗証番号は、聞かない・見ないようにします。</li>
+    <li>すぐに答えが出ないときは、持ち帰って次回に回答しても大丈夫です。</li></ul></div></details>
+
+<h2>初めて来た先輩の体験談</h2>
+  <details><summary>高齢者にちゃんと教えられるのか心配でした</summary><div class="body"><p>高齢者に間違ったことを教えちゃったり、その場で言葉につまらないか心配だったけど周りにはたくさんの人がいてみんなが助けてくれるからとても安心しました。今はAIも発展しているからAIに聞いてもいいと思います。AIの使い方を高齢者に教えるいい機会になると思いました。高齢者の方から「ありがとうね」といわれたときはとてもうれしかったです。教えてよかった！と感じました。（大学1年生）</p></div></details>
+  <details><summary>高齢者と会話するのが不安でした</summary><div class="body"><p>はじめは、なかなか高齢者と最近会話していないということもあり、高齢者と会話するのに対して不安がありました。しかし、実際に会話すると高齢者はとても優しく、教えることの内容がわからなくても優しく接してくれました。また、高齢者の方々から高齢者自身の大学生時代のお話であったり、若いうちにこれしておきなさいなどといった高齢者ならではのお話を聞く、知ることができるよい機会となりました。高齢者と会話する機会がなかなかない中、高齢者との交流ができるとても良い機会でした。（大学1年生）</p></div></details>
+</section>
+
+  <h2>初参加で迷ったら</h2><div class="panel"><h3>まずは、隣で一緒に画面を見る。</h3><p>「今日は何をしてみたいですか？」と聞くところから。答えが分からないときは、担当者や周りの学生に相談しましょう。</p><button class="btn outline" data-go="salon">写真で活動を見る</button></div>
+</section>
+
+<section class="tab" id="salon"><div class="section-title"><p class="eyebrow">SCENES & FLOW</p><h1>同じテーブルから、<br>会話がはじまる。</h1><p class="muted">送っていただいた実際の活動写真で、スマホカフェの様子を紹介します。</p></div><figure><img class="activity-photo" src="photos/3.jpg" alt="スマホを一緒に見ながら相談する活動風景" loading="lazy" width="1280" height="960"><figcaption>スマホを触る人、ノートを取る人。テーブルを囲んで、それぞれのペースで。</figcaption></figure><div class="two-col"><div><h2>スマホのことも、日々のことも。</h2><p>スマホの操作を一緒に確かめながら、お茶やお菓子を囲んで会話する時間。写真からは、世代をこえて同じ場を楽しむ様子が伝わります。</p></div><div class="panel"><h3>学生の役割</h3><p class="muted">相手の「やってみたい」を聞くこと。操作を代わりに済ませるより、本人が試せるように隣で支えます。</p></div></div><h2>当日の流れ</h2><p class="small">初参加の方向けの流れの目安です。集合時間や担当は、当日の運営案内に従ってください。</p><ol class="flow"><li><div><h3>集合・今日の確認</h3><p>担当者に挨拶し、相談の進め方や困ったときの相談先を確認します。</p></div></li><li><div><h3>会場準備・お迎え</h3><p>机や椅子を整え、参加者を迎えます。名前を伝えて、まずは一言ご挨拶。</p></div></li><li><div><h3>お話ししながらスマホ相談</h3><p>知りたいことを聞き、一つずつ一緒に操作します。分からないことは周囲に相談します。</p></div></li><li><div><h3>一緒におさらい</h3><p>できた操作をもう一度試してもらい、必要なら手順をメモします。</p></div></li><li><div><h3>片付け・振り返り</h3><p>会場を整え、気づいたことを共有。スタンプと活動記録も残しましょう。</p></div></li></ol><button class="btn" data-go="plan">活動予定を確認する →</button></section>
+
+<section class="tab" id="plan"><div class="section-title"><p class="eyebrow">SCHEDULE</p><h1>活動予定</h1><p>授業と活動、無理のないペースで。</p></div><div class="note"><b>サロンの開催情報</b><br>次回の開催日時・会場は未掲載です。参加前に運営からの案内を確認してください。</div><h2>自分の参加メモ</h2><p class="small">ここでの追加は個人のメモです。参加申込みや予約にはなりません。</p><div id="plan-list" aria-live="polite"></div><details><summary>参加予定をメモする</summary><form id="plan-form" class="body"><p><label>活動名<input id="plan-title" required maxlength="80" placeholder="例：スマホカフェ"></label></p><div class="two-col"><p><label>日付<input id="plan-date" type="date" required></label></p><p><label>開始時刻（任意）<input id="plan-time" type="time"></label></p></div><p><label>会場・連絡メモ（任意）<textarea id="plan-memo" maxlength="500" rows="2"></textarea></label></p><button class="btn" type="submit">参加メモを保存</button></form></details><h2>空きコマを整理する</h2><p class="small">授業があるコマを押すと色が変わります。空いている時間を確認して、開催案内と照らし合わせましょう。</p><table id="tt" aria-label="平日5日間の授業時間割"></table><div class="result" id="res" aria-live="polite"></div><p class="small" style="margin-top:14px">参加メモと時間割は、このブラウザに保存されます。</p></section>
+
+<section class="tab" id="manual">
+  <h1>教え方マニュアル</h1>
+  <p class="muted">画面の名前は、機種やバージョンで少し違います。</p>
+  <div class="seg" id="seg"><button class="on" data-m="m0">iPhone</button><button data-m="m1">Android</button><button data-m="m2">パソコン</button></div>
+
+  <div class="man on" id="m0">
+    <details><summary>文字を大きくする</summary><div class="body"><ol><li>「設定」を開く</li><li>「画面表示と明るさ」→「文字サイズを変更」</li><li>スライダーを右に動かす</li></ol></div></details>
+    <details><summary>Wi-Fiにつなぐ</summary><div class="body"><ol><li>「設定」→「Wi-Fi」</li><li>ネットワーク名を選ぶ</li><li>パスワードを入力して「接続」</li></ol></div></details>
+    <details><summary>写真を家族に送る</summary><div class="body"><ol><li>「写真」を開き、送る写真を選ぶ</li><li>左下の共有ボタン（四角から矢印が出たマーク）を押す</li><li>送り先のアプリや相手を選ぶ</li></ol></div></details>
+    <details><summary>音を大きくする</summary><div class="body"><ol><li>本体の横にある音量ボタン（上）を押す</li><li>着信音は「設定」→「サウンドと触覚」で調整</li></ol></div></details>
+  </div>
+
+  <div class="man" id="m1">
+    <details><summary>文字を大きくする</summary><div class="body"><ol><li>「設定」を開く</li><li>「ディスプレイ」→「フォントサイズ」（機種で名前が違います）</li><li>スライダーで大きさを選ぶ</li></ol></div></details>
+    <details><summary>Wi-Fiにつなぐ</summary><div class="body"><ol><li>「設定」→「ネットワークとインターネット」→「Wi-Fi」</li><li>ネットワーク名を選び、パスワードを入力する</li></ol></div></details>
+    <details><summary>写真を家族に送る</summary><div class="body"><ol><li>「フォト」（または「ギャラリー」）で写真を選ぶ</li><li>「共有」ボタンを押す</li><li>送り先のアプリや相手を選ぶ</li></ol></div></details>
+    <details><summary>音を大きくする</summary><div class="body"><ol><li>本体の側面の音量ボタン（上）を押す</li><li>着信音は「設定」→「音とバイブレーション」で調整</li></ol></div></details>
+  </div>
+
+  <div class="man" id="m2">
+    <details><summary>画面の文字を大きくする</summary><div class="body"><ol><li>Windowsは「設定」→「アクセシビリティ」→「テキストのサイズ」</li><li>ブラウザだけなら、Ctrlキーを押しながら＋を押す</li></ol></div></details>
+    <details><summary>音を大きくする</summary><div class="body"><ol><li>画面右下のスピーカーのマークを押す</li><li>バーを右に動かす</li></ol></div></details>
+    <details><summary>Wi-Fiにつなぐ</summary><div class="body"><ol><li>画面右下のWi-Fiのマークを押す</li><li>ネットワーク名を選び、パスワードを入力する</li></ol></div></details>
+  </div>
+</section>
+
+<section class="tab" id="stamp">
+  <p class="eyebrow">MY VOLUNTEER RECORD</p><h1>つながりスタンプ</h1><p>積み重ねた時間を、自分の記録に。</p><p class="note">このカードはブラウザ内に保存する活動の自己記録です。運営による出席認証や正式な活動証明にはなりません。</p>
+  <div id="sbox"></div>
+</section>
+
+<section class="tab" id="about"><div class="section-title"><p class="eyebrow">ABOUT US</p><h1>人と人を、<br>ゆるやかにつなぐ。</h1><p>運営チーム「さくさくぱんだ」について。</p></div><figure><img class="activity-photo" src="photos/1.jpg" alt="スマホカフェの参加者と学生による集合写真" loading="lazy" width="1280" height="960"><figcaption>スマホカフェでの一枚。地域の方と学生が、ともに過ごす時間を大切に。</figcaption></figure><div class="two-col"><div><h2>私たちについて</h2><p>私たちは、高齢者のスマホの困りごとや、世代をこえた交流に取り組む学生チーム「さくさくぱんだ」です。</p><p>スマホカフェや交流の場で聞いた声をもとに、スマホの「分からない」を一緒に考える活動を続けています。</p></div><div class="panel"><p class="eyebrow">OUR PROJECT</p><h3>つながロープ</h3><p>スマホの操作支援をきっかけに、高齢者と若者のつながりをつくるプロジェクト。このガイドは、活動に参加する学生の一歩を支えるためのページです。</p></div></div><h2>大切にしたい、3つのこと。</h2><div class="cards"><div class="item"><span class="card-num">01 / LISTEN</span><h3>まず、聞く。</h3><p class="muted">何ができなくて困っているか、何をやってみたいか。相手の言葉から始めます。</p></div><div class="item"><span class="card-num">02 / TOGETHER</span><h3>一緒に、試す。</h3><p class="muted">一度に一つずつ。本人が操作する時間とペースを大切にします。</p></div><div class="item"><span class="card-num">03 / CONNECT</span><h3>次へ、つなぐ。</h3><p class="muted">その日だけで終わらず、次の相談や新しい交流につなげていきます。</p></div></div><div class="panel"><p class="eyebrow">FOLLOW OUR DAYS</p><h2 style="margin-top:0">Instagram</h2><p>活動の写真やお知らせをまとめる場所。</p><p class="small">公式アカウントのリンクは準備中です。</p><button class="btn outline" disabled>Instagramリンク準備中</button></div><button class="btn" data-go="salon">活動の様子を見る →</button></section><footer class="copyright">つながロープ / さくさくぱんだ · 第3版</footer></main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+
+<nav id="nav" aria-label="メインナビゲーション"><button class="on" data-go="home"><b aria-hidden="true">⌂</b>ホーム</button><button data-go="help"><b aria-hidden="true">？</b>困ったとき</button><button data-go="plan"><b aria-hidden="true">▦</b>活動予定</button><button data-go="stamp"><b aria-hidden="true">☆</b>スタンプ</button><button data-go="about"><b aria-hidden="true">○</b>私たち</button></nav>
+
+<script>
+function show(id){
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('on',t.id===id)});
+  document.querySelectorAll('#nav button').forEach(function(b){b.classList.toggle('on',b.dataset.go===id)});
+  window.scrollTo(0,0);
+  document.querySelectorAll('#nav button').forEach(function(b){b.setAttribute('aria-current',b.dataset.go===id?'page':'false')});
+}
+document.querySelectorAll('[data-go]').forEach(function(b){b.addEventListener('click',function(){show(b.dataset.go)})});
+document.querySelectorAll('#seg button').forEach(function(b){b.addEventListener('click',function(){
+  document.querySelectorAll('#seg button').forEach(function(x){x.classList.toggle('on',x===b)});
+  document.querySelectorAll('.man').forEach(function(m){m.classList.toggle('on',m.id===b.dataset.m)});
+})});
+
+var days=['月','火','水','木','金'];
+var salons={};
+var busy={};
+try{busy=JSON.parse(localStorage.getItem('busy')||'{}')}catch(e){busy={}}
+function render(){
+  var h='<tr><th></th>';
+  days.forEach(function(d){h+='<th>'+d+'</th>'});
+  h+='</tr>';
+  for(var p=1;p<=5;p++){
+    h+='<tr><th>'+p+'限</th>';
+    for(var d=0;d<5;d++){
+      var k=d+'-'+p;
+      var cls=(busy[k]?'busy ':'')+(salons[Object.keys(salons).map(function(s){return s}).filter(function(s){return s===k})[0]]?'salon':'');
+      h+='<td><button class="'+cls+'" data-k="'+k+'" aria-pressed="'+!!busy[k]+'" aria-label="'+days[d]+'曜'+p+'限 '+(busy[k]?'授業あり':'空き')+'">'+(busy[k]?'授業':'空き')+'</button></td>';
+    }
+    h+='</tr>';
+  }
+  document.getElementById('tt').innerHTML=h;
+  var total=Object.keys(busy).filter(function(k){return busy[k]}).length;
+  document.getElementById('res').textContent='平日25コマのうち、空きコマは '+(25-total)+' コマです。移動時間も含めて参加できる時間を考えましょう。';
+}
+document.getElementById('tt').addEventListener('click',function(e){
+  var k=e.target.dataset&&e.target.dataset.k;
+  if(!k)return;
+  busy[k]=!busy[k];
+  try{localStorage.setItem('busy',JSON.stringify(busy))}catch(x){}
+  render();
+});
+render();
+
+/* ---- スタンプ・ポイント・表彰（支援者版Processingコードと同じ仕組み） ---- */
+var SALT='tsunaga-rope-stamp',PFX='TSUNAGA1.',VALID=1,FIRST=20,FIFTH=10;
+var TN=['つながりの種','ブロンズロープ','シルバーロープ','ゴールドロープ','プラチナロープ（つなぎ名人）'];
+var TM=[0,30,100,200,400];
+var TG=['ここから、あなたの活動が始まります。','最初の一歩、ありがとうございます！','地域に欠かせない存在になってきました。','たくさんの「できた」を支えています。','たくさんの参加が、つながりになっています！'];
+var CATS=['中学生','高校生','大学・専門学生','社会人','その他'];
+function ld(k,d){try{return JSON.parse(localStorage.getItem(k))||d}catch(x){return d}}
+function sv(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(x){}}
+var prof=ld('prof',{name:'',cat:2,aff:''}),stamps=ld('stamps',[]),events=ld('events',[]);
+var last='',cur=-1,pending='';
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function iso(d){return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}
+function hs(h){return Number.isInteger(h)?h+'.0':String(h)}
+function sign(i,t,d,p,h){var s=i+'|'+t+'|'+d+'|'+p+'|'+hs(h)+'|'+SALT,x=5381;for(var j=0;j<s.length;j++)x=((x<<5)+x+s.charCodeAt(j))|0;return ('00000000'+(x>>>0).toString(16)).slice(-8)}
+function enc(v){var o={i:v.id,t:v.t,d:v.d,p:v.p,h:v.h,s:sign(v.id,v.t,v.d,v.p,v.h)},b=new TextEncoder().encode(JSON.stringify(o)),s='';b.forEach(function(c){s+=String.fromCharCode(c)});return PFX+btoa(s).replace(/\+/g,'-').replace(/\//g,'_')}
+function dec(raw){
+  raw=(raw||'').replace(/\s/g,'');var q=raw.indexOf(PFX);if(q<0)return null;raw=raw.slice(q+PFX.length);
+  try{var s=atob(raw.replace(/-/g,'+').replace(/_/g,'/')),b=new Uint8Array(s.length);for(var i=0;i<s.length;i++)b[i]=s.charCodeAt(i);
+    var o=JSON.parse(new TextDecoder().decode(b));
+    if(!o.i||!o.t||!o.d||!Number.isFinite(o.p)||!Number.isFinite(o.h)||o.h<0||!(o.p>0)||o.s!==sign(o.i,o.t,o.d,o.p,o.h))return null;
+    return {id:o.i,t:o.t,d:o.d,p:o.p,h:Number(o.h)||0}}catch(x){return null}
+}
+function pts(){return stamps.reduce(function(a,s){return a+s.p+s.b},0)}
+function hrs(){return stamps.reduce(function(a,s){return a+s.h},0)}
+function hl(h){return String(Math.round(h*10)/10)}
+function ti(p){var r=0;TM.forEach(function(m,i){if(p>=m)r=i});return r}
+function redeem(raw){
+  last='';
+  if(!prof.name){pending=raw;last='先に名前を登録してください。';return sRender()}var ev=dec(raw);
+  if(!ev){last='× つながロープのコードではないか、読み取れませんでした。';return sRender()}
+  var pp=ev.d.split('-'),dd=new Date(+pp[0],+pp[1]-1,+pp[2]),t=new Date();t.setHours(0,0,0,0);
+  if(isNaN(dd)||iso(dd)!==ev.d){last='× 日付が読み取れませんでした。';return sRender()}
+  var diff=Math.round((t-dd)/86400000);
+  if(diff<0||diff>VALID){last='× 「'+esc(ev.t)+'」は受付期間外です（開催日 '+ev.d+'）。';return sRender()}
+  if(stamps.some(function(s){return s.id===ev.id})){last='× 「'+esc(ev.t)+'」のスタンプはすでに押してあります。';return sRender()}
+  var bonus=0,notes=[];
+  if(!stamps.length){bonus+=FIRST;notes.push('はじめての参加ボーナス +'+FIRST+' pt')}
+  if((stamps.length+1)%5===0){bonus+=FIFTH;notes.push((stamps.length+1)+'回目の参加ボーナス +'+FIFTH+' pt')}
+  var before=ti(pts());
+  stamps.push({id:ev.id,t:ev.t,d:ev.d,p:ev.p,b:bonus,h:ev.h});sv('stamps',stamps);
+  var after=ti(pts());
+  last='✓ 「'+esc(ev.t)+'」のスタンプを押しました！ +'+(ev.p+bonus)+' pt'+notes.map(function(n){return '<br>'+n}).join('')+(after>before?'<br>称号が「'+TN[after]+'」になりました！':'');
+  sRender();
+}
+function cert(){
+  var s='【ボランティア活動の記録】\n氏名：'+prof.name+'\n区分：'+CATS[prof.cat]+'\n所属：'+(prof.aff||'－')+'\n活動回数：'+stamps.length+'回\n活動時間：'+hl(hrs())+'時間\n獲得ポイント：'+pts()+' pt\n称号：'+TN[ti(pts())]+'\n\n【活動履歴】\n';
+  if(!stamps.length)s+='まだありません\n';
+  stamps.slice().reverse().forEach(function(x){s+='・'+x.d.replace(/-/g,'/')+' '+x.t+'（'+hl(x.h)+'時間）\n'});
+  return s+'\n※アプリ上の自己記録です。学校・企業への提出には、主催者の確認印などをお取りください。';
+}
+function cp(text){
+  var ok=function(){last='✓ コピーしました';sRender()},ng=function(){last='コピーできませんでした。下の欄を長押ししてコピーしてください。<textarea readonly rows="4">'+esc(text)+'</textarea>';sRender()};
+  try{navigator.clipboard.writeText(text).then(ok,ng)}catch(x){ng()}
+}
+function pf(){
+  return '<p><label>お名前<br><input id="pn" value="'+esc(prof.name)+'" placeholder="ニックネーム可"></label></p><p><label>区分<br><select id="pc">'+CATS.map(function(c,i){return '<option value="'+i+'"'+(i===prof.cat?' selected':'')+'>'+c+'</option>'}).join('')+'</select></label></p><p><label>学校名・学年、または所属（任意）<br><input id="pa" value="'+esc(prof.aff)+'"></label></p><button class="btn" data-a="saveProf">保存する</button>';
+}
+function sRender(){
+  var b=document.getElementById('sbox'),h='',P=pts(),i=ti(P),n=stamps.length;
+  if(last)h+='<div class="result">'+last+'</div>';
+  if(!prof.name){b.innerHTML=h+'<h2>はじめに、支援者登録をしましょう</h2><p class="muted">名前と区分を登録すると、活動のスタンプとポイントを記録できます。記録はこのブラウザだけに保存されます。</p>'+pf();return}
+  var nx=i+1<TM.length?TM[i+1]-P:0,pr=nx?(P-TM[i])/(TM[i+1]-TM[i]):1;
+  h+='<div class="item sun" style="cursor:default;margin-top:12px"><span class="muted">'+esc(prof.name)+'さん（'+CATS[prof.cat]+'）</span><h2 style="margin:2px 0">'+TN[i]+'</h2><p>'+TG[i]+'</p><div class="bar"><i style="width:'+Math.round(pr*100)+'%"></i></div><p class="muted">'+(nx?'次の「'+TN[i+1]+'」まであと '+nx+' pt':'最高の称号に到達しました！')+'</p><p><b>'+P+' pt</b>　活動 '+n+'回／'+hl(hrs())+'時間</p></div>';
+  h+='<h2>スタンプを押す</h2><p class="muted">届いた活動コードを貼り付けて記録します。同じ活動は1回だけ、開催日から翌日までのみ有効です。</p><textarea id="sin" rows="3" placeholder="コードを貼り付け"></textarea><button class="btn" data-a="redeem">スタンプを押す</button>';
+  var slots=(Math.floor(n/10)+1)*10,st=Math.max(0,slots-40),d='';
+  for(var s=st;s<slots;s++)d+='<span class="dot'+(s<n?' f':'')+((s+1)%5===0?' m':'')+'">'+(s<n?'✓':s+1)+'</span>';
+  h+='<h2>スタンプカード</h2><div class="dots">'+d+'</div><p class="muted">黄色い輪は、5回ごとのボーナスです。</p>';
+  h+='<h2>活動の履歴</h2>';
+  if(!n)h+='<p class="muted">まだスタンプがありません。受付のQRを読み取ってみましょう。</p>';
+  stamps.slice(-7).reverse().forEach(function(x){h+='<div class="row"><span>'+esc(x.t)+'<br><span class="muted">'+x.d.replace(/-/g,'/')+'　'+hl(x.h)+'時間</span></span><b>+'+(x.p+x.b)+' pt</b></div>'});
+  h+='<h2>参加の称号</h2>';
+  TN.forEach(function(t,k){h+='<div class="row"><span>'+t+'</span><span class="muted">'+TM[k]+' pt〜 '+(P>=TM[k]?'達成':'')+'</span></div>'});
+  h+='<button class="btn" data-a="cert">活動の自己記録をコピー</button>';
+  h+='<details><summary>プロフィールを変更</summary><div class="body">'+pf()+'</div></details>';
+  h+='<details'+(cur>=0?' open':'')+'><summary>活動コードの作成（試作用）</summary><div class="body"><p class="small">動作確認用のコード作成です。この画面から誰でも作成できるため、出席の証明には使えません。</p><p><label>活動名<br><input id="et" value="スマホカフェ"></label></p><p><label>開催日<br><input id="ed" type="date" value="'+iso(new Date())+'"></label></p><p><label>ポイント<br><select id="ep"><option>10</option><option>20</option><option>30</option></select></label></p><p><label>活動時間<br><select id="eh"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></label></p><button class="btn" data-a="mk">作成してコードを出す</button>';
+  events.forEach(function(v,k){h+='<div class="row"><span>'+esc(v.t)+'<br><span class="muted">'+v.d.replace(/-/g,'/')+'　'+v.p+' pt　'+hl(v.h)+'時間</span></span><span><button class="btn sub" data-a="show" data-i="'+k+'">コード</button> <button class="btn sub" data-a="del" data-i="'+k+'">削除</button></span></div>'});
+  if(cur>=0&&events[cur]){
+    var v=events[cur],code=enc(v),url=location.href.split('#')[0]+'#c='+code,qr='';
+    try{var q=qrcode(0,'L');q.addData(url);q.make();qr=q.createImgTag(5,8).replace('<img','<img class="qr" alt="受付用QRコード"')}catch(x){qr='<p class="muted">QR画像を作れませんでした。下のコードかリンクを送ってください。</p>'}
+    h+='<h3 style="margin-top:16px">'+esc(v.t)+'の受付用コード</h3>'+qr+'<p class="muted">受付でこのQRを見せて、各自のスマホのカメラで読み取ってもらいます。開催日から翌日までスタンプできます。</p><button class="btn" data-a="cpc">コードをコピー</button><button class="btn" data-a="cpl">リンクをコピー</button>';
+  }
+  h+='</div></details><p class="muted" style="margin-top:16px">記録はこのスマホの中だけに保存されます。</p>';
+  b.innerHTML=h;
+}
+document.getElementById('sbox').addEventListener('click',function(ev){
+  var t=ev.target.closest('[data-a]');if(!t)return;
+  var a=t.dataset.a,k=+t.dataset.i,g=function(id){return document.getElementById(id).value};
+  last='';
+  if(a==='saveProf'){
+    prof={name:g('pn').trim(),cat:+g('pc'),aff:g('pa').trim()};sv('prof',prof);
+    if(prof.name&&pending){var c=pending;pending='';return redeem(c)}
+    sRender();
+  }else if(a==='redeem')redeem(g('sin'));
+  else if(a==='mk'){
+    var title=g('et').trim(),date=g('ed');
+    if(!title||!date){last='× 活動名と開催日を入れてください。';return sRender()}
+    events.unshift({id:'e'+Date.now().toString(36),t:title,d:date,p:+g('ep'),h:+g('eh')});sv('events',events);cur=0;sRender();
+  }else if(a==='show'){cur=k;sRender()}
+  else if(a==='del'){events.splice(k,1);sv('events',events);cur=-1;sRender()}
+  else if(a==='cert')cp(cert());
+  else if(a==='cpc')cp(enc(events[cur]));
+  else if(a==='cpl')cp(location.href.split('#')[0]+'#c='+enc(events[cur]));
+});
+var _show=show;
+show=function(id){_show(id);if(id==='stamp'){last='';sRender()}};
+sRender();
+(function(){
+  var m=(location.hash||'').match(/#c=(.+)$/);if(!m)return;
+  try{history.replaceState(null,'',location.pathname+location.search)}catch(x){}
+  show('stamp');
+  if(!prof.name){pending=m[1];last='先に支援者登録をしてください。登録すると、そのままスタンプが押されます。';sRender()}else redeem(m[1]);
+})();
+
+var personalPlans=ld('tsunaga-v3-plans',[]);
+if(!Array.isArray(personalPlans))personalPlans=[];
+function renderPlans(){
+ var box=document.getElementById('plan-list');
+ if(!personalPlans.length){box.innerHTML='<div class="panel"><h3>参加メモはまだありません</h3><p class="muted">開催日が決まったら、下のフォームで予定を残せます。</p></div>';return}
+ box.innerHTML=personalPlans.slice().sort(function(a,b){return (a.date+a.time).localeCompare(b.date+b.time)}).map(function(p){return '<article class="plan-event"><button class="btn sub" data-delete-plan="'+esc(p.id)+'" aria-label="'+esc(p.title)+'の参加メモを削除">削除</button><p class="small">'+esc(p.date.replace(/-/g,'/'))+' '+esc(p.time||'')+'</p><h3>'+esc(p.title)+'</h3><p class="muted">'+esc(p.memo||'')+'</p><span class="pill">個人メモ・予約ではありません</span></article>'}).join('');
+}
+document.getElementById('plan-form').addEventListener('submit',function(e){e.preventDefault();var title=document.getElementById('plan-title').value.trim();if(!title)return;personalPlans.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),title:title,date:document.getElementById('plan-date').value,time:document.getElementById('plan-time').value,memo:document.getElementById('plan-memo').value.trim()});sv('tsunaga-v3-plans',personalPlans);this.reset();renderPlans();});
+document.getElementById('plan-list').addEventListener('click',function(e){var b=e.target.closest('[data-delete-plan]');if(!b)return;personalPlans=personalPlans.filter(function(p){return p.id!==b.dataset.deletePlan});sv('tsunaga-v3-plans',personalPlans);renderPlans();});
+renderPlans();
+</script>
+</body>
+</html>
+
